@@ -30,7 +30,7 @@ public class printQuadratic {
 
         // Print the values of both x values
         System.out.println("X one is " + x1);
-        System.out.println("X one is " + x2);
+        System.out.println("X two is " + x2);
 
     }
 

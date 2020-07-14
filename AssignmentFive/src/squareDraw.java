@@ -19,6 +19,26 @@ public class squareDraw {
 
         drawSquare(7, 3);
 
+        // Create space to see both squares
+        System.out.println();
+
+        drawSquare(5, 5);
+
+        // Create space to see both squares
+        System.out.println();
+
+        drawSquare(12, 15);
+
+        // Create space to see both squares
+        System.out.println();
+
+        drawSquare(10, 10);
+
+        // Create space to see both squares
+        System.out.println();
+
+        drawSquare(8, 3);
+
     }
 
 
