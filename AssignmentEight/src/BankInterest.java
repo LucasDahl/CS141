@@ -1,6 +1,6 @@
 // Lucas Dahl, CS 141, Summer 20, Section 2851
 //
-// Assignment #8 7/4/20
+// Assignment #8 7/14/20
 // Due 7/16/20
 //
 // This program will show the user their interest earned over the next 25 years.
@@ -18,13 +18,12 @@ public class BankInterest {
 
         // Ask the user for the initial amount in their bank account.
         System.out.println("How much money did your bank account start with? ");
+        System.out.print("--> ");
         startingAmount = keyboard.nextInt();
-
-        // Make space
-        System.out.println();
 
         // Ask the user for their yearly bank deposit amount.
         System.out.println("How much money did you deposit each year? ");
+        System.out.print("--> ");
         depositAmount = keyboard.nextInt();
 
         // Enter the data into the method
