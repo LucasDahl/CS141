@@ -29,7 +29,7 @@ public class TriangleAngle {
         System.out.print("--> ");
         sideC = keyboard.nextInt();
 
-        // Display the area of the triangle.
+        // Display the angle of the three triangles based on user input.
         System.out.println("The angles of the triangle in degrees are " +
                 findAngles(sideA, sideB, sideC) + ", " +
                 findAngles(sideC, sideA, sideB) + " and " +
@@ -43,17 +43,16 @@ public class TriangleAngle {
         // Properties
         double angleRadians, degreeAngle;
 
-        // Calculate the angle
+        // Calculate the angle(in radians)
         angleRadians = Math.acos(((sideA * sideA) + (sideB * sideB) - (sideC * sideC)) / (2 * (sideA * sideB)));
 
-        // Convert to degrees
+        // Convert to radians to degrees
         degreeAngle = Math.toDegrees(angleRadians);
 
         // Return the degree rounded to 2 decimals.
         return Math.round(degreeAngle * 100.0) / 100.0;
 
     }
-
 
 
 }
