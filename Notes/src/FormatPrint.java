@@ -4,7 +4,7 @@ public class FormatPrint {
 
         double x = 987654321.123;
 
-        System.out.printf("--$%.2f", 987.654);
+        System.out.printf("-- $%.2f", 987.654);
         System.out.println();
 
         System.out.printf("The number is -- %,20.2f.", x);
