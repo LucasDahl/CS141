@@ -16,6 +16,18 @@ public class NotesOnStrings {
 
         }
 
+        // To compare
+
+        if(s1.compareTo(s2) < 0) {
+
+            System.out.println("They are the same");
+
+        } else {
+
+            System.out.println("They are different");
+
+        }
+
     }
 
 }
