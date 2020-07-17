@@ -26,23 +26,26 @@ public class BirthdayCounting {
 
         // Properties
         Scanner keyboard = new Scanner(System.in);
-        int monthOne, dayOne, monthTwo, dayTwo, currentMonth, currentDay;
+        int monthOne, dayOne, monthTwo, dayTwo, currentMonth, currentDay, birthdayOne, birthdayTwo, nextBirthdayOne, nextBirthdayTwo, currentDate, gapOne, gapTwo;
         String nameOne, nameTwo, dayRange;
 
         // Display the opening message
         display();
 
         // Gather Data
-        System.out.printf("Today's Month (1-12) %15s", "? ");
+        System.out.printf("Today's Month (1-12) %9s", "? ");
         currentMonth = keyboard.nextInt();
 
-        System.out.printf("Today's Day (1-31) %18s", "? ");
+        // Get the days range based off the month.
+        dayRange = daysInMont(currentMonth);
+
+        System.out.printf("Today's Day %s %11s", dayRange, "? ");
         currentDay = keyboard.nextInt();
 
-        System.out.printf("Person 1's Name %11s", "? ");
+        System.out.printf("Person 1's Name %14s", "? ");
         nameOne = keyboard.next();
 
-        System.out.printf("Person 2's Name %11s", "? ");
+        System.out.printf("Person 2's Name %14s", "? ");
         nameTwo = keyboard.next();
 
         System.out.printf("%s's Birthday Month (1-12) %2s", nameOne, "? ");
@@ -51,7 +54,7 @@ public class BirthdayCounting {
         // Get the days range based off the month.
         dayRange = daysInMont(monthOne);
 
-        System.out.printf("%s's Birthday Day %s %3s", nameOne, dayRange, "? ");
+        System.out.printf("%s's Birthday Day %s %4s", nameOne, dayRange, "? ");
         dayOne = keyboard.nextInt();
 
         System.out.printf("%s's Birthday Month (1-12) %2s", nameTwo, "? ");
@@ -60,25 +63,59 @@ public class BirthdayCounting {
         // Get the days range based off the month.
         dayRange = daysInMont(monthTwo);
 
-        System.out.printf("%s's Birthday Day %s %3s", nameTwo, dayRange, "? ");
+        System.out.printf("%s's Birthday Day %s %4s", nameTwo, dayRange, "? ");
         dayTwo = keyboard.nextInt();
+
+        // Convert the given days into an int from 1 -365.
+        birthdayOne = getAbsoluteDate(monthOne, dayOne);
+        birthdayTwo = getAbsoluteDate(monthTwo, dayTwo);
+        currentDate = getAbsoluteDate(currentMonth, currentDay);
+
+        // Make the calculations.
+        nextBirthdayOne = subtractAbsoluteDate(birthdayOne, currentDate);
+        nextBirthdayTwo = subtractAbsoluteDate(birthdayTwo, currentDate);
+        gapOne = subtractAbsoluteDate(birthdayTwo, birthdayOne);
+        gapTwo = subtractAbsoluteDate(birthdayOne, birthdayTwo);
+
 
         // Display the results
         System.out.println();
         System.out.println("*** Calculating ***");
-
-
-
+        System.out.printf("It is %d days until %s's next birthday.%n", nextBirthdayOne, nameOne);
+        System.out.printf("It is %d days until %s's next birthday.%n", nextBirthdayTwo, nameTwo);
+        System.out.printf("There is a %d day gap from %s's to %s's birthday.%n", gapOne, nameOne, nameTwo);
+        System.out.printf("There is a %d day gap from %s's to %s's birthday.%n", gapTwo, nameTwo, nameOne);
+        System.out.println();
+        System.out.println("******************************************************");
+        
     }
 
 
     // Methods
 
-    // This method converts the date into a number in the year(1 -365).
+    // This method converts the date into a number in the year(1 - 365).
     public static int getAbsoluteDate(int month, int day) {
 
         // Properties
-        int absoluteDate = 0;
+        int absoluteDate = day;
+
+        for(int i = 1; i < month; i++) {
+
+            if(i  == 2) {
+
+                absoluteDate += 28;
+
+            } else if (i == 4 || i == 6 || i == 9 || i == 11) {
+
+                absoluteDate += 30;
+
+            } else {
+
+                absoluteDate += 31;
+
+            }
+
+        }
 
 
         // Return the date
@@ -92,6 +129,13 @@ public class BirthdayCounting {
         // Properties
         int date = 0;
 
+        date = day1 - day2;
+
+        if (date <= 0) {
+
+            date += 365;
+
+        }
 
         // Return the date
         return date;
@@ -105,6 +149,7 @@ public class BirthdayCounting {
 
         // Properties
         int numberOfDays = 0;
+
 
 
         // Return the number of days
@@ -133,13 +178,13 @@ public class BirthdayCounting {
 
             dayRange = "(1-28)";
 
-        } else if (month == 1 || month == 3 || month == 4 || month == 7 || month == 8 || month == 12) {
+        } else if (month == 4 || month == 6 || month == 9 || month == 11) {
 
-            dayRange = "(1-31)";
+            dayRange = "(1-30)";
 
         } else {
 
-            dayRange = "(1-30)";
+            dayRange = "(1-31)";
 
         }
 
