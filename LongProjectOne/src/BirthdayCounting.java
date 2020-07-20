@@ -1,6 +1,6 @@
 // Lucas Dahl, CS 141, Summer 20, Section 2851
 //
-// Assignment #5 7/17/20
+// Long Assignment 7/17/20
 // Due 7/27/20
 
 
@@ -24,109 +24,12 @@ public class BirthdayCounting {
     // Main method
     public static void main(String[] args) {
 
-        // Properties
-        Scanner keyboard = new Scanner(System.in);
-        int monthOne, dayOne, monthTwo, dayTwo, currentMonth, currentDay, birthdayOne, birthdayTwo, nextBirthdayOne, nextBirthdayTwo, currentDate, gapOne, gapTwo;
-        String nameOne, nameTwo, dayRange;
-
         // Display the opening message
         display();
 
-        //
-        // Gather Data
-//        System.out.printf("Today's Month (1-12) %9s", "? ");
-//        currentMonth = keyboard.nextInt();
-//
-//        // Get the days range based off the month.
-//        dayRange = daysInMont(currentMonth);
-//
-//        System.out.printf("Today's Day %s %11s", dayRange, "? ");
-//        currentDay = keyboard.nextInt();
-//
-//        System.out.printf("Person 1's Name %14s", "? ");
-//        nameOne = keyboard.next();
-//
-//        System.out.printf("Person 2's Name %14s", "? ");
-//        nameTwo = keyboard.next();
-//
-//        System.out.printf("%s's Birthday Month (1-12) %2s", nameOne, "? ");
-//        monthOne = keyboard.nextInt();
-//
-//        // Get the days range based off the month.
-//        dayRange = daysInMont(monthOne);
-//
-//        System.out.printf("%s's Birthday Day %s %4s", nameOne, dayRange, "? ");
-//        dayOne = keyboard.nextInt();
-//
-//        System.out.printf("%s's Birthday Month (1-12) %2s", nameTwo, "? ");
-//        monthTwo = keyboard.nextInt();
-//
-//        // Get the days range based off the month.
-//        dayRange = daysInMont(monthTwo);
-//
-//        System.out.printf("%s's Birthday Day %s %4s", nameTwo, dayRange, "? ");
-//        dayTwo = keyboard.nextInt();
-        System.out.printf("Today's Month (1-12) %11s", "? ");
-        currentMonth = keyboard.nextInt();
+        // Gather the data
+        getInfo();
 
-        // Get the days range based off the month.
-        dayRange = daysInMont(currentMonth);
-
-        System.out.printf("Today's Day %s %13s", dayRange, "? ");
-        currentDay = keyboard.nextInt();
-
-        System.out.printf("Person 1's Name %16s", "? ");
-        nameOne = keyboard.next();
-
-        System.out.printf("Person 2's Name %16s", "? ");
-        nameTwo = keyboard.next();
-
-        System.out.printf("%-30s", nameOne + "'s" + " Birthday Month (1-12)");
-        System.out.printf("%s", "? ");
-        monthOne = keyboard.nextInt();
-
-        // Get the days range based off the month.
-        dayRange = daysInMont(monthOne);
-
-        System.out.printf("%-30s", nameOne + "'s" + " Birthday Month " + dayRange);
-        System.out.printf("%s", "? ");
-        dayOne = keyboard.nextInt();
-
-        System.out.printf("%-30s", nameTwo + "'s" + " Birthday Month (1-12)");
-        System.out.printf("%s", "? ");
-        monthTwo = keyboard.nextInt();
-
-        // Get the days range based off the month.
-        dayRange = daysInMont(monthTwo);
-
-        System.out.printf("%-30s", nameTwo + "'s" + " Birthday Month " + dayRange);
-        System.out.printf("%s", "? ");
-        dayTwo = keyboard.nextInt();
-
-
-
-
-        // Convert the given days into an int from 1 -365.
-        birthdayOne = getAbsoluteDate(monthOne, dayOne);
-        birthdayTwo = getAbsoluteDate(monthTwo, dayTwo);
-        currentDate = getAbsoluteDate(currentMonth, currentDay);
-
-        // Make the calculations.
-        nextBirthdayOne = subtractAbsoluteDate(birthdayOne, currentDate);
-        nextBirthdayTwo = subtractAbsoluteDate(birthdayTwo, currentDate);
-        gapOne = subtractAbsoluteDate(birthdayTwo, birthdayOne);
-        gapTwo = subtractAbsoluteDate(birthdayOne, birthdayTwo);
-
-
-        // Display the results
-        System.out.println();
-        System.out.println("*** Calculating ***");
-        System.out.printf("It is %d days until %s's next birthday.%n", nextBirthdayOne, nameOne);
-        System.out.printf("It is %d days until %s's next birthday.%n", nextBirthdayTwo, nameTwo);
-        System.out.printf("There is a %d day gap from %s's to %s's birthday.%n", gapOne, nameOne, nameTwo);
-        System.out.printf("There is a %d day gap from %s's to %s's birthday.%n", gapTwo, nameTwo, nameOne);
-        System.out.println();
-        System.out.println("******************************************************");
 
     }
 
@@ -232,6 +135,80 @@ public class BirthdayCounting {
 
         // Return the string
         return dayRange;
+
+    }
+    
+
+    // This method gathers all the data
+    public static void getInfo() {
+
+        // Properties
+        Scanner keyboard = new Scanner(System.in);
+        int monthPersonOne, dayPersonOne, monthPersonTwo, dayPersonTwo, currentMonth, currentDay, birthdayPersonOne, birthdayPersonTwo, nextBirthdayPersonOne, nextBirthdayPersonTwo, currentDate, gapOne, gapTwo;
+        String nameOne, nameTwo, dayRange;
+
+        // Gather Data
+        System.out.printf("Today's Month (1-12) %11s", "? ");
+        currentMonth = keyboard.nextInt();
+
+        // Get the days range based off the month.
+        dayRange = daysInMont(currentMonth);
+
+        System.out.printf("Today's Day %s %13s", dayRange, "? ");
+        currentDay = keyboard.nextInt();
+
+        System.out.printf("Person 1's Name %16s", "? ");
+        nameOne = keyboard.next();
+
+        System.out.printf("Person 2's Name %16s", "? ");
+        nameTwo = keyboard.next();
+
+        System.out.printf("%-30s", nameOne + "'s" + " Birthday Month (1-12)");
+        System.out.printf("%s", "? ");
+        monthPersonOne = keyboard.nextInt();
+
+        // Get the days range based off the month.
+        dayRange = daysInMont(monthPersonOne);
+
+        System.out.printf("%-30s", nameOne + "'s" + " Birthday Month " + dayRange);
+        System.out.printf("%s", "? ");
+        dayPersonOne = keyboard.nextInt();
+
+        System.out.printf("%-30s", nameTwo + "'s" + " Birthday Month (1-12)");
+        System.out.printf("%s", "? ");
+        monthPersonTwo = keyboard.nextInt();
+
+        // Get the days range based off the month.
+        dayRange = daysInMont(monthPersonTwo);
+
+        System.out.printf("%-30s", nameTwo + "'s" + " Birthday Month " + dayRange);
+        System.out.printf("%s", "? ");
+        dayPersonTwo = keyboard.nextInt();
+
+
+
+
+        // Convert the given days into an int from 1 -365.
+        birthdayPersonOne = getAbsoluteDate(monthPersonOne, dayPersonOne);
+        birthdayPersonTwo = getAbsoluteDate(monthPersonTwo, dayPersonTwo);
+        currentDate = getAbsoluteDate(currentMonth, currentDay);
+
+        // Make the calculations.
+        nextBirthdayPersonOne = subtractAbsoluteDate(birthdayPersonOne, currentDate);
+        nextBirthdayPersonTwo = subtractAbsoluteDate(birthdayPersonTwo, currentDate);
+        gapOne = subtractAbsoluteDate(birthdayPersonTwo, birthdayPersonOne);
+        gapTwo = subtractAbsoluteDate(birthdayPersonOne, birthdayPersonTwo);
+
+
+        // Display the results
+        System.out.println();
+        System.out.println("*** Calculating ***");
+        System.out.printf("It is %d days until %s's next birthday.%n", nextBirthdayPersonOne, nameOne);
+        System.out.printf("It is %d days until %s's next birthday.%n", nextBirthdayPersonTwo, nameTwo);
+        System.out.printf("There is a %d day gap from %s's to %s's birthday.%n", gapOne, nameOne, nameTwo);
+        System.out.printf("There is a %d day gap from %s's to %s's birthday.%n", gapTwo, nameTwo, nameOne);
+        System.out.println();
+        System.out.println("******************************************************");
 
     }
 
