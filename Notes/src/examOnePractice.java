@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class examOnePractice {
 
     // Key
@@ -7,7 +9,7 @@ public class examOnePractice {
     // 4 = Understood
     // 5 = Understood
     // 6 = understood
-    // 7 =
+    // 7 = Understood
     // 8 = Understood
     // 9 = Understood
     // 10 =
@@ -17,6 +19,29 @@ public class examOnePractice {
 
          //Properties
         int num = 1;
+        //double x = Math.random(); // DO NOT DO THIS!
+        Random randObject = new Random(); // This is how you create random numbers.
+
+        for(int i = 1; i <= 100; i++) {
+
+            int numRan;
+            numRan = randObject.nextInt();
+            System.out.println(numRan);
+
+            int x = randObject.nextInt(21) -10; // Is the same as randObject.nextInt(10 - (-10) +1) + (-10);
+
+
+        }
+
+        // Random mums
+        //A random number between 1 and 47 inclusive
+        //int random1 = randObject.nextInt(47) + 1;
+
+        //A random number between 23 and 30 inclusive
+        //int random2 = randObject.nextInt(8) + 23;
+
+        //A random number between 4 and 12 inclusive
+        //int random3 = randObject.nextInt(8) + 4;
 
         System.out.println();
 
@@ -27,6 +52,7 @@ public class examOnePractice {
         // Make space
         System.out.println();
 
+        // Question 4
         for(int i = 1; i < 11; i++) {
 
             System.out.print((i * i) + " ");
@@ -46,6 +72,7 @@ public class examOnePractice {
 
     }
 
+    // Question 6
 //    public static void main(String[] args) {
 //        int x = 1; int y = 2; int z = 3;
 //        z = mystery(y, x, y);
@@ -94,6 +121,7 @@ public class examOnePractice {
 
     }
 
+    // Question 9
     public static void mystery(int n) {
         int x = 1;
         int y = 2;
@@ -109,6 +137,7 @@ public class examOnePractice {
 
 //    public static final int NUMBER = 42;
 //
+    // Question 8
 //    public static void main(String[] args) {
 //        int answer = sum(4, NUMBER, 2);
 //        answer = answer + 10;
@@ -123,6 +152,8 @@ public class examOnePractice {
 //    }
 
     // Methods
+
+    // Question 2
     public static void printStar() {
 
         String x = "*";
@@ -134,6 +165,7 @@ public class examOnePractice {
 
     }
 
+    // Question 3
     public static void printStrings(String stringToPrint, int numberOfTimes) {
 
         for(int i = 0; i < numberOfTimes; i++) {
@@ -143,6 +175,34 @@ public class examOnePractice {
         }
 
     }
+
+
+    // Question 7
+    // Ones place  int digit = number % 10;
+    // The right two digits int lastTwoDigit = number % 100;
+
+    // If number = 12345
+    //number % 10 = 5
+    //number % 100 = 45
+    //number % 1000 = 345
+    //number % 10000 = 2345
+    //number % 10000 = 12345
+
+    //number / 10000 = 1
+    //number / 1000 = 12
+    //number / 100 = 123
+    //number / 10 = 1234
+    //number / 1 = 12345
+
+
+    // Question 10
+
+    // Question 11
+
+
+
+
+
 
 
 
