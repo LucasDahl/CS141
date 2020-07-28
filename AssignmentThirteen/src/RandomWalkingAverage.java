@@ -21,16 +21,7 @@ public class RandomWalkingAverage {
         System.out.print("What size walk do you want to test? ");
         numSteps = keyboard.nextInt();
 
-        // Loop through the method 10,000 times to get the total amount of steps.
-        for(int i = 1; i < 10000; i++) {
-
-            totalSteps +=randomWalk(numSteps);
-
-        }
-
-
-        // Make the calculations.
-        averageSteps = totalSteps / 10000;
+        averageSteps = randomWalkAverage(numSteps);
 
         // Display the average
         System.out.printf("For a walk of size %d, after 10,000 tries, on average it took %.2f steps to get there.", numSteps, averageSteps);
@@ -39,36 +30,45 @@ public class RandomWalkingAverage {
 
 
     // Methods
-    public static double randomWalk(int x) {
+    public static double randomWalkAverage(int x) {
 
         // Properties
         int totalSteps = 0, position = 0;
+        double average = 0;
         Random forwardOrBack = new Random();
 
         // Loop through until the max position is reached.
-        while(position != Math.abs(x)) {
+        for(int i = 1; i < 10000; i++) {
+
+            while(position != Math.abs(x)) {
 
 
-            if (forwardOrBack.nextBoolean()) {
+                if (forwardOrBack.nextBoolean()) {
 
-                // Move forward(positive)
-                position ++;
+                    // Move forward(positive)
+                    position ++;
 
-            } else {
+                } else {
 
-                // Move backwards(negative).
-                position --;
+                    // Move backwards(negative).
+                    position --;
+
+                }
+
+                // Increase the total number of steps and keep track for every loop.
+                totalSteps ++;
 
             }
 
-
-            // Increase the total number of steps and keep track for every loop.
-            totalSteps ++;
+            // Reset the position for every loop.
+            position = 0;
 
         }
 
+        average = totalSteps / 10000.0;
+
         // Return the total number of steps
-        return totalSteps;
+        return average;
 
     }
 
