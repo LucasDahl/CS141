@@ -20,7 +20,7 @@ public class CountVowels {
         Boolean flag = false;
 
 
-
+        // This loop will keep asking the user to enter a sentence until they say "stop".
         while(flag != true) {
 
 
@@ -54,33 +54,32 @@ public class CountVowels {
 
         // Properties
         int[] vowelArray = new int[5];
-        char[] toCheck;
 
-        // Set the string to a character array after making it lower case
-        toCheck = stringToCount.toLowerCase().toCharArray();
 
         // Loop though the sting to count each vowel and update the array
         for(int i = 0; i < stringToCount.length(); i++) {
 
+            //
+            char toCheck = stringToCount.toLowerCase().charAt(i);
 
             // Increase the vowel count if the letter is a count.
-            if(toCheck[i] == 'a') {
+            if(toCheck == 'a') {
 
                 vowelArray[0]++;
 
-            } else if(toCheck[i] == 'e') {
+            } else if(toCheck == 'e') {
 
                 vowelArray[1]++;
 
-            } else if(toCheck[i] == 'i') {
+            } else if(toCheck == 'i') {
 
                 vowelArray[2]++;
 
-            } else if(toCheck[i] == 'o') {
+            } else if(toCheck == 'o') {
 
                 vowelArray[3]++;
 
-            } else if(toCheck[i] == 'u') {
+            } else if(toCheck == 'u') {
 
                 vowelArray[4]++;
 
