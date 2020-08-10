@@ -31,41 +31,26 @@ public class ArrayCollapse {
 
     }
 
-    // This method will take an array and add two ints(will not add the same one twice) and return a new array.
+    // This method takes in an array and adds every 2 numbers together(doesn't add the same number twice) and makes a new array to return
+    // If there is an an odd num,ber of elements the odd number will be added at the end.
     public static int[] collapse(int[] arrayToCollapse) {
 
         // Properties
-        int[] newArray;
-        int size, num = 0;
+        int[] newArray = new int[(arrayToCollapse.length / 2) + (arrayToCollapse.length % 2)];
 
-        // Get the size for the new array
-        if(arrayToCollapse.length % 2 == 0) {
-
-            // Set the loop length.
-            size = arrayToCollapse.length / 2;
-
-        } else {
-
-            // Set the loop length.
-            size = (arrayToCollapse.length / 2) + 1;
-
-        }
-
-        System.out.println(size);
-        // The array to collapse is even.
-        newArray = new int[size];
-
-        for(int i = 0; i < arrayToCollapse.length / 2; i++) {
+        // Set each elements for the new array.
+        for(int i = 0; i < arrayToCollapse.length / 2 ; i++) {
 
             // Set the current index of the new array to the next two elements of the passed in array.
-            newArray[i] += arrayToCollapse[num] + arrayToCollapse[num + 1];
-
-            num += 2;
+            newArray[i] += arrayToCollapse[i * 2] + arrayToCollapse[(i * 2) + 1];
 
         }
 
+        // Set the last element of the new array if the array passed in was odd.
         if(arrayToCollapse.length % 2 == 1) {
-            newArray[size - 1] = arrayToCollapse[arrayToCollapse.length - 1];
+
+            newArray[newArray.length - 1] = arrayToCollapse[arrayToCollapse.length - 1];
+
         }
 
         // Return the array

@@ -38,7 +38,7 @@ public class ReturnLargest {
     }
 
 
-    //
+    // This method will take an int and and an array as parameters then pass back the nth(or kth) largest number.
     public static int kthLargest(int x, int[] a) {
 
         // Properties
