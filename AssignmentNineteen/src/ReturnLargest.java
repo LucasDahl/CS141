@@ -45,22 +45,21 @@ public class ReturnLargest {
         int newArray[] = new int[a.length];
         int largestNumTemp;
 
+        // Create a new array to make sure the passed in array is not changed and to sort.
         for(int i = 0; i < newArray.length; ++i) {
 
-            // Create a new array so the passed in array is not changed.
             newArray[i] = a[i];
 
         }
 
         // Get the largest int.
-        for(int i = 0; i < newArray.length; ++i) {
+        for(int i = 0; i < newArray.length; i++) {
 
-            for(int j = 0; j < newArray.length-1; ++j) {
+            for(int j = 0; j < newArray.length - 1; j++) {
 
-                // If the current index is less than next
+                // Sort the new array from largest to smallest.
                 if(newArray[j] < newArray[j + 1]) {
 
-                    
                     largestNumTemp = newArray[j];
                     newArray[j] = newArray[j + 1];
                     newArray[j + 1] = largestNumTemp;
@@ -68,14 +67,17 @@ public class ReturnLargest {
                 }
             }
         }
-
+       
+        // This will return the x(passed in int) largest number.
         if(x <= 0 || x > a.length) {
 
             return -9999;
 
         } else {
 
+            // Since the array is in order from largest to smallest we can return the passed in value - 1, since arrays start at 0.
             return newArray[x - 1];
+
 
         }
 

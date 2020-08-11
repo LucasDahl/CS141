@@ -32,7 +32,13 @@ public class TwelveWords {
         for(int i = 0; i < wordArray.length; i++) {
 
             if(i % 2 != 0) {
+
                 wordArray[i] = wordArray[i].toUpperCase();
+
+            } else {
+
+                wordArray[i] = wordArray[i].toLowerCase();
+
             }
 
         }
