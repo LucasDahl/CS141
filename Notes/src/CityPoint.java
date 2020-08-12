@@ -1,7 +1,10 @@
 // Tested in cityPointTestMainProgram
 
+import com.sun.xml.internal.ws.api.ha.StickyFeature;
+
 /**
  *This class represents a city object with the identifiable x,y coordinate.
+ * Where x and y are always positive (aka, 1st quadrant only)
  *
  * @author Lucas d. Dahl
  * @version 8/10/20
@@ -10,9 +13,94 @@
 public class CityPoint {
 
     // Fields
-    String name;
-    int xCoor;
-    int yCoor;
+    private String name;
+    private int xCoor;
+    private int yCoor;
+
+    // Constructors - Constructors has no return type and has the same name as class
+
+    /**
+     * This constructor sets all the major information for the CityPoint
+     *
+     * @param startName This is the name of the city
+     * @param startX This is the initial x point
+     * @param startY This is the initial y point
+     */
+    public CityPoint(String startName, int startX, int startY) {
+
+        if(startName.length() >= 3) {
+            name = startName;
+        } else {
+            name = "[Name is too short]";
+        }
+
+        if (startX >= 0 ) {
+            xCoor = startX;
+        } else {
+            xCoor = 0;
+        }
+
+        if (startY >= 0 ) {
+            yCoor = startY;
+        } else {
+            yCoor = 0;
+        }
+
+
+    }
+
+    /**
+     * This constructor sets only the x and y coordinates, but makes the city name unknown.
+     *
+     * @param startX his is the initial x point
+     * @param startY his is the initial x point
+     */
+    public CityPoint(int startX, int startY) {
+
+        name = "Unknown City";
+        if (startX >= 0 ) {
+            xCoor = startX;
+        } else {
+            xCoor = 0;
+        }
+
+        if (startY >= 0 ) {
+            yCoor = startY;
+        } else {
+            yCoor = 0;
+        }
+
+    }
+
+    /**
+     * This constructor sets the city name, but makes the points zero.
+     *
+     * @param startName This sets the city name
+     */
+    public CityPoint(String startName) {
+
+        if(startName.length() >= 3) {
+            name = startName;
+        } else {
+            name = "[Name is too short]";
+        }
+
+        xCoor = 0;
+        yCoor = 0;
+
+    }
+
+    // Default constructor
+
+    /**
+     *
+     */
+    public CityPoint() {
+
+        name = "Unknown City";
+        xCoor = 0;
+        yCoor = 0;
+    }
 
     // Methods
 
@@ -40,8 +128,9 @@ public class CityPoint {
      */
     public void setLocation(int newXValue, int newYValue) {
 
-        xCoor = newXValue;
-        yCoor = newYValue;
+
+        if (newXValue >= 0) xCoor = newXValue;
+        if (newYValue >= 0) yCoor = newYValue;
 
     }
 
@@ -56,5 +145,70 @@ public class CityPoint {
         xCoor = xCoor + deltaX;
         yCoor = yCoor + deltaY;
 
+    }
+
+    /**
+     * This method finds the distance from the current CityPoint to a secondary
+     * cityPoint as a double value.
+     *
+     * @param other The second CityPoint to be compared to
+     * @return The distance between the two CityPoints.
+     */
+    public double distance(CityPoint other) {
+
+        int dx = xCoor - other.xCoor;
+        int dy = yCoor - other.yCoor;
+        double dist = dx * dx + dy * dy;
+        dist = Math.sqrt(dist);
+
+        return dist;
 
     }
+
+    // Should have in EVERY Class. This is automatically called when we try and print. This makes it easier to print.
+    // Start with an empty string and build it.
+
+    @Override // Java Doc annotation, replaces manual java doc. This is all the JavaDac we have to so for toString.
+    public String toString() {
+
+        String answer = "";
+
+        answer = answer + name;
+        answer = answer + " is at (";
+        answer = answer + xCoor;
+        answer = answer + ",";
+        answer = answer + yCoor;
+        answer = answer + ").";
+
+        return answer;
+
+    }
+
+    /**
+     * This method returns the current xCoor.
+     *
+     * @return Returns the current x coordinate.
+     */
+    public int getXCoor() {
+        return xCoor;
+    }
+
+    /**
+     * This method returns the current yCoor.
+     *
+     * @return Returns the current y coordinate.
+     */
+    public int getYcoor() {
+        return yCoor;
+    }
+
+    /**
+     * This method returns the string of the CityPoint.
+     *
+     * @return Returns the name of the CityPoint.
+     */
+    public String getNam() {
+        return name;
+    }
+
+}

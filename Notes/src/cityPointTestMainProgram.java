@@ -11,30 +11,24 @@ public class cityPointTestMainProgram {
 
         CityPoint[] p = new CityPoint[3];
 
-        // Create an array and fill it with citypoints
-        for(int i = 0; i < 3; i++) {
 
-            p[i] = new CityPoint();
-
-        }
-
-
-        p[0].name = "Seattle";
-        p[0].setLocation(4,5);
-
-        p[0].translate(-2, 5);
-
-        p[1].name = "Denver";
-        p[1].setLocation(13,45);
-
-        p[2].name = "Miami";
-        p[2].setLocation(55,67);
+        // Set the values.
+        p[0] = new CityPoint("Seattle", 5, 4);
+        p[1] = new CityPoint("San Diego", 50, 4);
+        p[2] = new CityPoint("Tacoma", 12, 4);
 
 //        System.out.println(p1.name + " is at (" + p1.xCoor + "," + p1.yCoor + ").");
 //        System.out.println(p2.name + " is at (" + p2.xCoor + "," + p2.yCoor + ").");
 //        System.out.println(p3.name + " is at (" + p3.xCoor + "," + p3.yCoor + ").");
 
         System.out.println("The distance to p[0] is " + p[0].findDistance());
+
+        // calls the "toString" method.
+        for(int i = 0; i < p.length; i++) {
+
+            System.out.println(p[i]);
+
+        }
 
 
     }
