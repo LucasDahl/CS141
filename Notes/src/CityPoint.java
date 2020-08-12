@@ -6,18 +6,25 @@ import com.sun.xml.internal.ws.api.ha.StickyFeature;
  *This class represents a city object with the identifiable x,y coordinate.
  * Where x and y are always positive (aka, 1st quadrant only)
  *
- * @author Lucas d. Dahl
+ * @author Lucas D. Dahl
  * @version 8/10/20
  *
  */
 public class CityPoint {
 
+    //=================================================
     // Fields
+    //=================================================
     private String name;
     private int xCoor;
     private int yCoor;
 
+    // Static means shared. It either uses or is shared data
+    private static int numberOfCities = 0;
+
+    //=================================================
     // Constructors - Constructors has no return type and has the same name as class
+    //=================================================
 
     /**
      * This constructor sets all the major information for the CityPoint
@@ -28,8 +35,9 @@ public class CityPoint {
      */
     public CityPoint(String startName, int startX, int startY) {
 
+        // "this is the same as self from swift.
         if(startName.length() >= 3) {
-            name = startName;
+            this.name = startName;
         } else {
             name = "[Name is too short]";
         }
@@ -46,6 +54,8 @@ public class CityPoint {
             yCoor = 0;
         }
 
+        numberOfCities ++;
+
 
     }
 
@@ -57,18 +67,7 @@ public class CityPoint {
      */
     public CityPoint(int startX, int startY) {
 
-        name = "Unknown City";
-        if (startX >= 0 ) {
-            xCoor = startX;
-        } else {
-            xCoor = 0;
-        }
-
-        if (startY >= 0 ) {
-            yCoor = startY;
-        } else {
-            yCoor = 0;
-        }
+       this("Unknown City", startX, startY);
 
     }
 
@@ -93,6 +92,7 @@ public class CityPoint {
     // Default constructor
 
     /**
+     * This method sets all the fields
      *
      */
     public CityPoint() {
@@ -102,7 +102,11 @@ public class CityPoint {
         yCoor = 0;
     }
 
+    //=================================================
     // Methods
+    //=================================================
+
+
 
     /**
      * This function gets the distance from a given city point at the origin (0,0).
@@ -209,6 +213,15 @@ public class CityPoint {
      */
     public String getNam() {
         return name;
+    }
+
+    /**
+     * This will return the number of cities
+     *
+     * @return This returns the total number of cities
+     */
+    public int getNumberOfCities() {
+        return numberOfCities;
     }
 
 }
