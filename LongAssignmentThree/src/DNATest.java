@@ -28,7 +28,7 @@ public class DNATest {
 
         // Close the file
         outStream.close();
-
+        
     }
 
     // Methods
@@ -110,22 +110,26 @@ public class DNATest {
         while (file.hasNext()) {
 
             // Loop properties
-            String line = file.nextLine();
+            String line = file.nextLine(), line2;
             Scanner lineScan = new Scanner(line);
 
             if(line.contains(" ")) {
 
+                // Set the name of the sample
                 nameOne = line;
+
+                // Get the lines to evaluate.
                 line = file.nextLine();
+                line2 = file.nextLine();
+
+                // Evaluate the data sets.
                 dataSetOne = evaluateData(line);
-                line = file.nextLine();
-                dataSetTwo = evaluateData(line);
+                dataSetTwo = evaluateData(line2);
 
             }
 
             // Compare the data
             compareData(dataSetOne, dataSetTwo, nameOne, outData);
-
 
             // Reset the properties for the next loop
             nameOne = "";
@@ -133,11 +137,10 @@ public class DNATest {
             for(int i = 0; i < 4; i++) {
                 dataSetOne[i] = dataSetTwo[i] = 0;
             }
-
         }
     }
 
-    // THis method evaluates the data to take only the desired data.
+    // This method evaluates the data to take only the desired data.
     public static int[] evaluateData(String data) {
 
         // Properties
@@ -204,6 +207,7 @@ public class DNATest {
         // See if the data matches
         for(int i = 0; i < 4; i++) {
 
+            // Check if there is any percentage that's different.
             if(dataPercOne[i] != dataPercTwo[i]) {
 
                 isMatch = false;
@@ -228,7 +232,6 @@ public class DNATest {
         out.println("\tBefore:  " + setOne[0] + " - " + setOne[1] + " - " + setOne[2] + " - " + setOne[3] + " After:  " + setTwo[0] + " - " + setTwo[1] + " - " + setTwo[2] + " - " + setTwo[3]);
         out.println("\tBefore:  " + dataPercOne[0] + "%/" + dataPercOne[1] + "%/" + dataPercOne[2] + "%/" + dataPercOne[3] + "%" + " After:  " + dataPercTwo[0] + "%/" + dataPercTwo[1] + "%/" + dataPercTwo[2] + "%/" + dataPercTwo[3] + "%");
         out.println("\t\t" + match);
-
 
     }
 
