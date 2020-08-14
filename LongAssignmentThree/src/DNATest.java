@@ -3,6 +3,13 @@
 // Assignment #19 8/5/20
 // Due 8/10/20
 //
+/* This program reads from a file give by the user that contains DBA sequences.
+The DNA test measures the various parts of the sequence and assigns them a letter.
+While the letters could be anything from A to Z, the only letters that matter for
+this test are the letters {A,B,C,D} all other letters can be ignored completely.
+After the program evaluates the data it will wright the results to a new file that
+the user is asked to name.
+*/
 
 import java.io.File;
 import java.io.PrintStream;
@@ -17,6 +24,10 @@ public class DNATest {
         Scanner fileScanner = null;
         PrintStream outStream = null;
 
+        // Intro
+        System.out.printf("This program processes a file of DNA structures for various biological%n" +
+                "samples to determine if a mutation of a particular nature has occurred.");
+
         // Get the file name to evaluate.
         fileScanner = getFile();
 
@@ -28,7 +39,7 @@ public class DNATest {
 
         // Close the file
         outStream.close();
-        
+
     }
 
     // Methods
@@ -41,11 +52,13 @@ public class DNATest {
         String fileName;
         File dataFile = null;
 
-
-        System.out.print("Please enter the name and type of the file you want to read from. ");
+        // Ask for the file name.
+        System.out.println();
+        System.out.println();
+        System.out.print("input file name? ");
         fileName = keyboard.next();
 
-
+        // Set the data file.
         dataFile = new File(fileName);
 
         // Try to open the file
@@ -61,6 +74,7 @@ public class DNATest {
 
         }
 
+        // Return the file scanner.
         return fileScanner;
 
     }
@@ -74,7 +88,7 @@ public class DNATest {
         String fileName = "";
 
         // Ask the user for the name of the file they want to create.
-        System.out.print("What is the name of the file and type you want to create? ");
+        System.out.print("output file name? ");
         fileName = keyboard.next();
 
         // Create a new file
@@ -91,7 +105,6 @@ public class DNATest {
 
         }
 
-
         // Return the PrintStream
         return out;
 
@@ -103,30 +116,24 @@ public class DNATest {
         // Properties
         String nameOne = "";
         int[] dataSetOne = new int[4], dataSetTwo = new int[4];
-        int dataTotal;
-
 
         // Two data sets are needed to compare, after that the can be reset for the next set.
         while (file.hasNext()) {
 
             // Loop properties
-            String line = file.nextLine(), line2;
-            Scanner lineScan = new Scanner(line);
+            String nameLine = file.nextLine(), dataLineOne, dataLineTwo;
+            Scanner lineScan = new Scanner(nameLine);
 
-            if(line.contains(" ")) {
+            // Set the name of the sample
+            nameOne = nameLine;
 
-                // Set the name of the sample
-                nameOne = line;
+            // Get the line data to evaluate.
+            dataLineOne = file.nextLine();
+            dataLineTwo = file.nextLine();
 
-                // Get the lines to evaluate.
-                line = file.nextLine();
-                line2 = file.nextLine();
-
-                // Evaluate the data sets.
-                dataSetOne = evaluateData(line);
-                dataSetTwo = evaluateData(line2);
-
-            }
+            // Evaluate the data sets.
+            dataSetOne = evaluateData(dataLineOne);
+            dataSetTwo = evaluateData(dataLineTwo);
 
             // Compare the data
             compareData(dataSetOne, dataSetTwo, nameOne, outData);
@@ -145,7 +152,6 @@ public class DNATest {
 
         // Properties
         int[] dataArray = new int[4];
-
 
         // Loop though the sting to count each vowel and update the array
         for(int i = 0; i < data.length(); i++) {
@@ -184,7 +190,7 @@ public class DNATest {
 
         // Properties
         boolean isMatch = true;
-        int[] dataPercOne = new int[4], dataPercTwo = new int[4];
+        int[] dataPercentOne = new int[4], dataPercentTwo = new int[4];
         int totalOne = 0, totalTwo = 0;
         String match = "";
 
@@ -199,8 +205,8 @@ public class DNATest {
         // Convert the data sets into percentages to compare.
         for(int i = 0; i < 4; i++) {
 
-            dataPercOne[i] = Math.round((setOne[i] * 100) / totalOne);
-            dataPercTwo[i] = Math.round((setTwo[i] * 100) / totalTwo);
+            dataPercentOne[i] = Math.round((setOne[i] * 100) / totalOne);
+            dataPercentTwo[i] = Math.round((setTwo[i] * 100) / totalTwo);
 
         }
 
@@ -208,7 +214,7 @@ public class DNATest {
         for(int i = 0; i < 4; i++) {
 
             // Check if there is any percentage that's different.
-            if(dataPercOne[i] != dataPercTwo[i]) {
+            if(dataPercentOne[i] != dataPercentTwo[i]) {
 
                 isMatch = false;
 
@@ -229,12 +235,12 @@ public class DNATest {
 
         // Write the data to the file.
         out.println(dataName);
-        out.println("\tBefore:  " + setOne[0] + " - " + setOne[1] + " - " + setOne[2] + " - " + setOne[3] + " After:  " + setTwo[0] + " - " + setTwo[1] + " - " + setTwo[2] + " - " + setTwo[3]);
-        out.println("\tBefore:  " + dataPercOne[0] + "%/" + dataPercOne[1] + "%/" + dataPercOne[2] + "%/" + dataPercOne[3] + "%" + " After:  " + dataPercTwo[0] + "%/" + dataPercTwo[1] + "%/" + dataPercTwo[2] + "%/" + dataPercTwo[3] + "%");
-        out.println("\t\t" + match);
+        out.printf("%10s  %2d -%2d -%2d -%3d %10s %d - %d - %d - %d%n","Before:", setOne[0], setOne[1], setOne[2], setOne[3],
+                "After:", setTwo[0], setTwo[1], setTwo[2], setTwo[3]);
+        out.printf("%10s %2d%%/%2d%%/%2d%%/%2d%%%-2s %9s%d%%/%d%%/%d%%/%d%%%n","Before:", dataPercentOne[0], dataPercentOne[1], dataPercentOne[2], dataPercentOne[3],
+                "", "After:", dataPercentTwo[0], dataPercentTwo[1], dataPercentTwo[2], dataPercentTwo[3]);
+        out.printf("%10s %s%n", " ", match);
 
     }
-
-
 }
 
