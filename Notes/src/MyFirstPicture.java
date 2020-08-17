@@ -52,7 +52,7 @@ public class MyFirstPicture {
             g.drawOval(x, y, dx, dy);
 
         }
-        
+
         // Set back to black
         g.setColor(Color.BLACK);
 
