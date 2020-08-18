@@ -8,9 +8,24 @@
 import java.awt.*;
 import java.util.*;
 
+/**
+ * This program uses a class called drawingPanel to make
+ * a space ship flying over a city.
+ *
+ * @author Lucas D. Dahl
+ * @version 8/17/20
+ *
+ */
 public class SpaceShip {
 
     // Main method
+
+    /**
+     * This is the main method that calls the method to
+     * make the graphic art.
+     *
+     * @param args
+     */
     public static void main(String[] args) {
 
         // Create the panel.
@@ -27,7 +42,7 @@ public class SpaceShip {
         // Draw Ship
         drawShip(canvas);
 
-        // Draw people on roofs
+        // Draw people on roofs(in specific locations)
         drawPeople(canvas, 130, 322);
         drawPeople(canvas, 134, 322);
         drawPeople(canvas, 138, 322);
@@ -47,7 +62,11 @@ public class SpaceShip {
 
     }
 
-    // Draw the buildings.
+    /**
+     * This method draws all the buildings in the city.
+     *
+     * @param canvas the canvas or panel on which to place the graphics.
+     */
     public static void drawBuildings(Graphics canvas) {
 
         canvas.setColor(Color.GRAY);
@@ -63,7 +82,15 @@ public class SpaceShip {
 
     }
 
+    /**
+     * This method will draw the space ship, including the beam(person inside the beam)
+     * and the burst from the engine.
+     *
+     * @param canvas the canvas or panel on which to place the graphics.
+     */
     public static void drawShip(Graphics canvas) {
+
+        Color temp = canvas.getColor();
 
         canvas.fillRect(340,130, 75,10);
         canvas.setColor(Color.BLUE);
@@ -109,8 +136,18 @@ public class SpaceShip {
         canvas.setColor(Color.BLACK);
         drawPeople(canvas, 365, 180);
 
+        canvas.setColor(temp);
+
     }
 
+    /**
+     * This method will draw a person in the given location of an
+     * x andy value.
+     *
+     * @param canvas the canvas or panel on which to place the graphics.
+     * @param x is the x value in which the person will be place.
+     * @param y is the y value in which the person will be place.
+     */
     public static void drawPeople(Graphics canvas, int x, int y) {
 
         canvas.drawLine(x, y, x, y - 8);
