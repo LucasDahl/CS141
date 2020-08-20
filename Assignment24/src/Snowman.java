@@ -72,12 +72,12 @@ public class Snowman {
         // Make the snowman by parts.
 
         // Head
-        g.fillOval(x, y, 55, 55);
+        g.fillOval(x, y, 60, 60);
 
         // Body
-        g.fillOval(x - 10, y + 40, 80, 80);
-        g.drawOval(x - 10, y + 40, 80, 80);
-        g.fillOval(x - 30, y + 90, 120, 120);
+        g.fillOval(x - 10, y + 45, 80, 80);
+        g.drawOval(x - 10, y + 45, 80, 80);
+        g.fillOval(x - 30, y + 95, 120, 120);
 
         // Eyes
         g.setColor(Color.WHITE); // THe eys are white
@@ -93,8 +93,8 @@ public class Snowman {
 
         // Arms
         g.setColor(Color.BLACK); // The arms are black
-        g.drawLine(x, y + 60, x - 40, y);
-        g.drawLine(x + 60, y + 60, x + 90, y);
+        g.drawLine(x, y + 65, x - 40, y);
+        g.drawLine(x + 65, y + 60, x + 90, y);
 
     }
 
